@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="favoriteSongEntity"
+            type="com.example.karaokekotlin.data.database.entities.FavoriteSongEntity" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/favoriteSongRowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="263dp"
+        android:layout_marginVertical="0dp">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/favorite_row_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/Iv_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImageFromUrl="@{favoriteSongEntity.item.snippet.thumbnails.medium.url}"
+                />
+
+            <TextView
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:text="Khuc nhac"
+                android:maxLines="2"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Iv_thumbnail"
+                android:text="@{favoriteSongEntity.item.snippet.title}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

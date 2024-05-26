@@ -1,0 +1,122 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id 'com.google.dagger.hilt.android'
+    id("kotlin-parcelize")
+    id 'androidx.navigation.safeargs'
+}
+apply plugin: 'kotlin-kapt'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def superpowered_sdk_pathh = properties.getProperty('superpowered.dir')
+def superpowered_sdk_path = new File(superpowered_sdk_pathh)
+
+android {
+    namespace 'com.example.karaokekotlin'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.karaokekotlin"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk { // these platforms cover 99.9% percent of all Android devices
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_PLATFORM=android-26', '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_NEON=TRUE', '-DANDROID_STL=c++_static', "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
+                cFlags '-O3', '-fsigned-char' // full optimization, char data type is signed
+                cppFlags '-fsigned-char', "-I${superpowered_sdk_path}"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.22.1'
+        }
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    ndkVersion '25.1.8937393'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation libs.androidx.core.ktx
+    implementation libs.gson
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.activity
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    // Retrofit
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    // Image Loading library Coil
+    implementation libs.coil
+    // Shimmer
+    implementation libs.shimmer
+    // Dagger - Hilt
+    implementation 'com.google.dagger:hilt-android:2.51.1'
+    kapt 'com.google.dagger:hilt-compiler:2.51.1'
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+
+    // DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    // Material Components
+    implementation 'com.google.android.material:material:1.8.0'
+
+    // Navigation Component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    // Room components
+    implementation "androidx.room:room-runtime:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
+    androidTestImplementation "androidx.room:room-testing:2.6.1"
+    //Youtube Player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui:12.1.0'
+    //PCM Decoder
+    implementation 'com.github.lincollincol:PCM-Decoder:1.0'
+    //mp3 player
+    implementation 'com.github.jeancsanchez:JcPlayer:2.7.2'
+}
+
+kapt {
+    correctErrorTypes true
+}

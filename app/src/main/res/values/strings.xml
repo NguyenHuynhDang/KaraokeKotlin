@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">KaraokeKotlin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_fragment">Trang chính</string>
+    <string name="favorite_fragment">Mục yêu thích</string>
+    <string name="favorites_list">Danh sách yêu thích</string>
+
+    <string name="no_internet_connection">Không có kết nối mạng</string>
+    <string name="recorded_list">Các bản thu âm</string>
+    <string name="recordeds_list">Danh sách các bản thu âm</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="delete_favorite_menu">Xóa</string>
+    <string name="no_favorite_songs">Chưa có mục yêu thích</string>
+    <string name="delete_all">Xóa tất cả</string>
+    <string name="save_to_favorites">Lưu vào mục yêu thích</string>
+    <string name="no_recorded_songs">Chưa có bản thu âm</string>
+    <string name="songs_removed">mục đã bị xóa</string>
+    <string name="item_selected">mục được chọn</string>
+    <string name="items_selected">mục được chọn</string>
+    <string name="all_songs_removed">Đã xóa</string>
+    <string name="songs_saved">Đã lưu vào yêu thích</string>
+    <string name="song_removed_from_favorite">Đã xóa khỏi yêu thích</string>
+    <string name="start">Hát</string>
+    <string name="start_and_record">Hát và thu âm</string>
+    <string name="effect">Thêm hiệu ứng</string>
+    <string name="autotune">Autotune</string>
+    <string name="mic_volume">Âm lượng đầu vào</string>
+    <string name="echo">Âm vang</string>
+    <string name="reverb">Âm vọng</string>
+    <string name="rename">Đổi tên</string>
+    <string name="delete_recorded_songs">bản ghi đã bị xóa</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+    <string name="song_rename">Đổi tên bài hát</string>
+    <string name="item">mục</string>
+    <string name="delete">Đã xóa</string>
+    <string name="xoa">Xóa</string>
+    <string name="recorded_rename">Đổi tên bản ghi</string>
+    <string name="song_saved">Lưu bản ghi</string>
+    <string name="detail_tittle">Phòng thu cá nhân</string>
+    <string name="exit_dialog_tittle">Việc thoát sẽ ngừng quá trình ghi. \nLưu bản ghi?</string>
+    <string name="request_permission_toast">Cần chấp nhận để sử dụng tính năng này</string>
+</resources>

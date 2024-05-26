@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/songListFragment">
+    <fragment
+        android:id="@+id/songListFragment"
+        android:name="com.example.karaokekotlin.ui.SongListFragment"
+        android:label="Danh sách đề xuất"
+        tools:layout="@layout/fragment_song_list">
+        <action
+            android:id="@+id/action_songListFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.karaokekotlin.ui.FavoriteFragment"
+        android:label="Danh sách yêu thích"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.example.karaokekotlin.ui.DetailActivity"
+        android:label="Karaoke"
+        tools:layout="@layout/activity_detail">
+        <argument
+            android:name="item"
+            app:argType="com.example.karaokekotlin.model.Item" />
+    </activity>
+    <fragment
+        android:id="@+id/recordedFragment"
+        android:name="com.example.karaokekotlin.ui.RecordedFragment"
+        android:label="Danh sách các bản thu âm"
+        tools:layout="@layout/fragment_recorded" />
+</navigation>
