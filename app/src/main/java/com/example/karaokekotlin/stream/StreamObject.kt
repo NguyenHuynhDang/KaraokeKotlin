@@ -1,4 +1,4 @@
-package com.example.karaokekotlin.streaming
+package com.example.karaokekotlin.stream
 
 class StreamObject(
     private val sampleRate: Int,

@@ -34,7 +34,7 @@ import com.example.karaokekotlin.data.database.entities.FavoriteSongEntity
 import com.example.karaokekotlin.databinding.ActivityDetailBinding
 import com.example.karaokekotlin.recorder.AndroidAudioRecorder
 import com.example.karaokekotlin.service.AudioCaptureService
-import com.example.karaokekotlin.streaming.StreamObject
+import com.example.karaokekotlin.stream.StreamObject
 import com.example.karaokekotlin.util.Constants.Companion.ACTION_START
 import com.example.karaokekotlin.util.Constants.Companion.ACTION_STOP
 import com.example.karaokekotlin.util.Constants.Companion.DES_PATH_KEY
