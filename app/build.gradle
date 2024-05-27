@@ -113,8 +113,8 @@ dependencies {
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui:12.1.0'
     //PCM Decoder
     implementation 'com.github.lincollincol:PCM-Decoder:1.0'
-    //mp3 player
-    implementation 'com.github.jeancsanchez:JcPlayer:2.7.2'
+//    //mp3 player
+//    implementation 'com.github.jeancsanchez:JcPlayer:2.7.2'
 }
 
 kapt {

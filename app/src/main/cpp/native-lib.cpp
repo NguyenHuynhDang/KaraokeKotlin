@@ -6,14 +6,14 @@
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_karaokekotlin_streaming_StreamObject_stream(JNIEnv *env, jobject thiz, jint samplerate,
+Java_com_example_karaokekotlin_stream_StreamObject_stream(JNIEnv *env, jobject thiz, jint samplerate,
                                                      jint buffersize) {
     karaoke = new Karaoke((unsigned int)samplerate, (unsigned int)buffersize);
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_karaokekotlin_streaming_StreamObject_stopStreaming(JNIEnv *env, jobject thiz) {
+Java_com_example_karaokekotlin_stream_StreamObject_stopStreaming(JNIEnv *env, jobject thiz) {
     if (karaoke)
     {
         karaoke->stopRecord();
@@ -24,7 +24,7 @@ Java_com_example_karaokekotlin_streaming_StreamObject_stopStreaming(JNIEnv *env,
 }
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_karaokekotlin_streaming_StreamObject_setEffectEnable(JNIEnv *env, jobject thiz,
+Java_com_example_karaokekotlin_stream_StreamObject_setEffectEnable(JNIEnv *env, jobject thiz,
                                                             jboolean value) {
     if (karaoke) karaoke->setEffectEnable(value);
     __android_log_print(ANDROID_LOG_DEBUG, TAG, "set effect enable = %d", value);
@@ -32,14 +32,14 @@ Java_com_example_karaokekotlin_streaming_StreamObject_setEffectEnable(JNIEnv *en
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_karaokekotlin_streaming_StreamObject_setAutoTuneEnable(JNIEnv *env, jobject thiz,
+Java_com_example_karaokekotlin_stream_StreamObject_setAutoTuneEnable(JNIEnv *env, jobject thiz,
                                                                         jboolean value) {
     if (karaoke) karaoke->setAutotuneEnable(value);
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_karaokekotlin_streaming_StreamObject_setEffectValue(JNIEnv *env, jobject thiz,
+Java_com_example_karaokekotlin_stream_StreamObject_setEffectValue(JNIEnv *env, jobject thiz,
                                                            jint effect_type, jint value) {
     if (karaoke)
     {
@@ -58,7 +58,7 @@ Java_com_example_karaokekotlin_streaming_StreamObject_setEffectValue(JNIEnv *env
 }
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_example_karaokekotlin_streaming_StreamObject_setMicVolume(JNIEnv *env, jobject thiz, jfloat value) {
+Java_com_example_karaokekotlin_stream_StreamObject_setMicVolume(JNIEnv *env, jobject thiz, jfloat value) {
     if (karaoke) karaoke->setMicVolume(value);
     __android_log_print(ANDROID_LOG_DEBUG, TAG, "setMicVolume = %f", value);
 }

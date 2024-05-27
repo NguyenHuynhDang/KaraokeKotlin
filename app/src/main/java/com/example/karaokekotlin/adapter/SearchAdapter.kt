@@ -8,18 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.karaokekotlin.databinding.SongRowLayoutBinding
 import com.example.karaokekotlin.model.Item
 import com.example.karaokekotlin.model.SongResponse
+import com.example.karaokekotlin.ui.SearchFragmentDirections
 import com.example.karaokekotlin.ui.SongListFragmentDirections
 import com.example.karaokekotlin.util.SongsDiffUtil
 import com.example.karaokekotlin.viewmodel.MainViewModel
 
-class SongAdapter(
-    private val mainViewModel: MainViewModel,
-) : RecyclerView.Adapter<SongAdapter.MyViewHolder>() {
+class SearchAdapter(
+    private val mainViewModel: MainViewModel
+) : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     private var songs = emptyList<Item>()
 
     class MyViewHolder(
         val binding: SongRowLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(items: Item) {
             binding.item = items
             binding.executePendingBindings()
@@ -47,7 +49,7 @@ class SongAdapter(
         holder.bind(currentSong)
         holder.binding.songLayout.setOnClickListener {
             if (mainViewModel.networkStatus) {
-                val action = SongListFragmentDirections.actionSongListFragmentToDetailActivity(currentSong)
+                val action = SearchFragmentDirections.actionSearchFragmentToDetailActivity(currentSong)
                 holder.binding.songLayout.findNavController().navigate(action)
             } else {
                 mainViewModel.showNetworkStatus()

@@ -1,5 +1,9 @@
 package com.example.karaokekotlin.util
 
+import com.example.karaokekotlin.data.database.entities.FavoriteSongEntity
+import com.example.karaokekotlin.model.Item
+import com.example.karaokekotlin.model.SongResponse
+
 object Utils {
      fun msToDuration(ms: Long): String {
         val total = ms / 1000
@@ -14,6 +18,9 @@ object Utils {
 
         return "$mStr${sStr}"
      }
+
+   var songResponse: SongResponse? = null
+   var searchResponse: SongResponse? = null
 }
 
 //class SongDialog(

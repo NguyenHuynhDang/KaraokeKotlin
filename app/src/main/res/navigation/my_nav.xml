@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_songListFragment_to_detailActivity"
             app:destination="@id/detailActivity" />
+        <action
+            android:id="@+id/action_songListFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -36,4 +39,16 @@
         android:name="com.example.karaokekotlin.ui.RecordedFragment"
         android:label="Danh sách các bản thu âm"
         tools:layout="@layout/fragment_recorded" />
+    <fragment
+        tools:layout="@layout/fragment_search"
+        android:id="@+id/searchFragment"
+        android:name="com.example.karaokekotlin.ui.SearchFragment"
+        android:label="Kết quả tìm kiếm" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+        <argument
+            android:name="searchContent"
+            app:argType="string" />
+    </fragment>
 </navigation>

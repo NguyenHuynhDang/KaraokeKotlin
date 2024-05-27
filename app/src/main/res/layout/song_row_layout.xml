@@ -10,11 +10,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:id="@+id/song_layout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        onSongClicked="@{item}"
-
         android:layout_marginVertical="0dp">
         <ImageView
             android:id="@+id/Iv_thumbnail"

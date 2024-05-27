@@ -100,10 +100,10 @@ class MainViewModel @Inject constructor(
                 val response = repository.remote.searchSongResponse(queries)
                 searchSongResponse.value = handleSongResponse(response)
             } catch (e: Exception) {
-                searchSongResponse.value = NetworkResult.Error("Songs not found.")
+                searchSongResponse.value = NetworkResult.Error("Không có dữ liệu")
             }
         } else {
-            searchSongResponse.value = NetworkResult.Error("No Internet Connection.")
+            searchSongResponse.value = NetworkResult.Error("Không có kết nối mạng")
         }
     }
 
@@ -114,10 +114,10 @@ class MainViewModel @Inject constructor(
                 val response = repository.remote.getSongResponse(queries)
                 defaultSongResponse.value = handleSongResponse(response)
             } catch (e: Exception) {
-                defaultSongResponse.value = NetworkResult.Error("Songs not found.")
+                defaultSongResponse.value = NetworkResult.Error("Không có dữ liệu")
             }
         } else {
-            defaultSongResponse.value = NetworkResult.Error("No Internet Connection.")
+            defaultSongResponse.value = NetworkResult.Error("Không có kết nối mạng")
         }
     }
 
@@ -154,7 +154,7 @@ class MainViewModel @Inject constructor(
 
     fun showNetworkStatus() {
         if (!networkStatus) {
-            Toast.makeText(getApplication(), "No Internet Connection", Toast.LENGTH_SHORT).show()
+            Toast.makeText(getApplication(), "Không có kết nối mạng", Toast.LENGTH_SHORT).show()
         }
     }
     //save recorded song

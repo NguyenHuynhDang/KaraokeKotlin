@@ -71,17 +71,17 @@ class SongBinding {
             }
         }
 
-        @BindingAdapter("onSongClicked")
-        @JvmStatic
-        fun onSongSelected(view: ConstraintLayout, item: Item) {
-            view.setOnClickListener {
-                try {
-                    val action = SongListFragmentDirections.actionSongListFragmentToDetailActivity(item)
-                    view.findNavController().navigate(action)
-                } catch (e: Exception) {
-                    Log.d("onSongClicked", e.message.toString())
-                }
-            }
-        }
+//        @BindingAdapter("onSongClicked")
+//        @JvmStatic
+//        fun onSongSelected(view: ConstraintLayout, item: Item) {
+//            view.setOnClickListener {
+//                try {
+//                    val action = SongListFragmentDirections.actionSongListFragmentToDetailActivity(item)
+//                    view.findNavController().navigate(action)
+//                } catch (e: Exception) {
+//                    Log.d("onSongClicked", e.message.toString())
+//                }
+//            }
+//        }
     }
 }

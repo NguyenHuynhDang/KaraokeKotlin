@@ -10,9 +10,9 @@ class Constants {
 
         // queries
 
-        const val API_KEY = "AIzaSyBdABdlzLZjaZ16ef97BhxQeZPuKr5Mk8o"
+        const val API_KEY = "AIzaSyBRIR28XgIwJAxa3-6owS2OhbR1-SNNNdc"
         const val DEFAULT_CONTENT = "karaoke"
-        const val DEFAULT_MAX = "25"
+        const val DEFAULT_MAX = "5"
         const val DEFAULT_QUERY_PART = "snippet"
         const val DEFAULT_QUERY_TYPE = "video"
 

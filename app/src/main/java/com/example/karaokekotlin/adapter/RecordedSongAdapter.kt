@@ -49,37 +49,40 @@ class RecordedSongAdapter (
     inner class MyViewHolder(val binding: RecordedSongRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val seekBar: SeekBar = binding.sbRecordSb
-        //private var seekBarUpdater: Runnable? = null
 
-        fun bind(recordedSongEntity: RecordedSongEntity, position: Int) {
+        fun bind(recordedSongEntity: RecordedSongEntity, position: Int, holder: MyViewHolder) {
             binding.recordedSongEntity = recordedSongEntity
             binding.util = Utils
             val currentTimeTextView = binding.tvCurrentTime
             binding.executePendingBindings()
-            binding.ivIcon.setOnClickListener {
-                if (currentPlayingPosition == position) {
-                    mediaPlayerManager.stopPlaying()
-                    seekBar.visibility = View.INVISIBLE
-                    currentTimeTextView.visibility = View.INVISIBLE
-                    currentPlayingPosition = -1
-                    seekBarUpdater?.let { seekBarUpdateHandler.removeCallbacks(it) }
+            binding.recordedSongRowLayout.setOnClickListener {
+                if (multiSelection) {
+                    applySelection(holder, recordedSongEntity)
                 } else {
-                    currentTimeTextView.visibility = View.VISIBLE
-                    seekBar.visibility = View.VISIBLE
-                    mediaPlayerManager.playSong(recordedSongEntity.path, {
-                        seekBar.max = it.duration
-                        startUpdatingSeekBar(seekBar, currentTimeTextView)
-                    }, {
+                    if (currentPlayingPosition == position) {
+                        mediaPlayerManager.stopPlaying()
                         seekBar.progress = 0
-                        //
-                        seekBar.visibility = View.INVISIBLE
-                        currentTimeTextView.visibility = View.INVISIBLE
+                        currentTimeTextView.text = "00:00"
                         currentPlayingPosition = -1
-                        //
                         seekBarUpdater?.let { seekBarUpdateHandler.removeCallbacks(it) }
-                    })
-                    currentPlayingPosition = position
+                    } else {
+                        currentTimeTextView.visibility = View.VISIBLE
+                        seekBar.visibility = View.VISIBLE
+                        mediaPlayerManager.playSong(recordedSongEntity.path, {
+                            seekBar.max = it.duration
+                            startUpdatingSeekBar(seekBar, currentTimeTextView)
+                        }, {
+                            seekBar.progress = 0
+                            //
+                            currentTimeTextView.text = "00:00"
+                            currentPlayingPosition = -1
+                            //
+                            seekBarUpdater?.let { seekBarUpdateHandler.removeCallbacks(it) }
+                        })
+                        currentPlayingPosition = position
+                    }
                 }
+
             }
             seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -128,18 +131,18 @@ class RecordedSongAdapter (
         rootView = holder.itemView.rootView
 
         val currentSong = recordedSongs[position]
-        holder.bind(currentSong, position)
+        holder.bind(currentSong, position, holder)
 
         saveItemStateOnScroll(currentSong, holder)
 
         /**
          * Single Click Listener
          * */
-        holder.binding.recordedSongRowLayout.setOnClickListener {
-            if (multiSelection) {
-                applySelection(holder, currentSong)
-            }
-        }
+//        holder.binding.recordedSongRowLayout.setOnClickListener {
+//            if (multiSelection) {
+//                applySelection(holder, currentSong)
+//            }
+//        }
 
         /**
          * Long Click Listener
