@@ -41,4 +41,5 @@
     <string name="detail_tittle">Phòng thu cá nhân</string>
     <string name="exit_dialog_tittle">Việc thoát sẽ ngừng quá trình ghi. \nLưu bản ghi?</string>
     <string name="request_permission_toast">Cần chấp nhận để sử dụng tính năng này</string>
+    <string name="stop">Dừng</string>
 </resources>

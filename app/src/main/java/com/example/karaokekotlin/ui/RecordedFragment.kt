@@ -32,11 +32,18 @@ class RecordedFragment : Fragment() {
     private lateinit var mAdapter: RecordedSongAdapter
     private var _binding: FragmentRecordedBinding? = null
     private val binding get() = _binding!!
+    private val TAG = "TAGggg"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d(TAG, "recorded frag oncreate")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("TAGggg", "recorded oncreateVIEW")
         _binding = FragmentRecordedBinding.inflate(inflater, container, false)
         mAdapter = RecordedSongAdapter(requireActivity(), mainViewModel, MediaPlayerManager)
 
@@ -86,9 +93,10 @@ class RecordedFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        Log.d("TAGggg", "recorded ONDESTROYED VIEW")
         super.onDestroyView()
         _binding = null
-        MediaPlayerManager.release()
+        MediaPlayerManager.stopPlaying()
         mAdapter.clearContextualActionMode()
     }
 

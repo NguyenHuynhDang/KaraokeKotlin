@@ -59,13 +59,17 @@ class RecordedSongAdapter (
                 if (multiSelection) {
                     applySelection(holder, recordedSongEntity)
                 } else {
+                    Log.d("TAGggg", "record adapter. button clicked STOP, cur song ${currentPlayingPosition}, pos = ${position}" )
                     if (currentPlayingPosition == position) {
+                        Log.d("TAGggg", "record adapter. button clicked,, stop")
                         mediaPlayerManager.stopPlaying()
                         seekBar.progress = 0
                         currentTimeTextView.text = "00:00"
                         currentPlayingPosition = -1
                         seekBarUpdater?.let { seekBarUpdateHandler.removeCallbacks(it) }
                     } else {
+                        Log.d("TAGggg", "record adapter. button clicked START, cur song ${currentPlayingPosition}, pos = ${position}" )
+                        Log.d("TAGggg", "record adapter. button clicked  start")
                         currentTimeTextView.visibility = View.VISIBLE
                         seekBar.visibility = View.VISIBLE
                         mediaPlayerManager.playSong(recordedSongEntity.path, {
@@ -121,6 +125,7 @@ class RecordedSongAdapter (
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        Log.d("TAGggg", "recorded adapter oncreateViewHolder")
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = RecordedSongRowLayoutBinding.inflate(layoutInflater, parent, false)
         return MyViewHolder(binding)

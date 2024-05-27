@@ -2,28 +2,29 @@ package com.example.karaokekotlin.ui
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.karaokekotlin.R
 import com.example.karaokekotlin.adapter.SearchAdapter
-import com.example.karaokekotlin.adapter.SongAdapter
 import com.example.karaokekotlin.databinding.FragmentSearchBinding
 import com.example.karaokekotlin.util.NetworkListener
 import com.example.karaokekotlin.util.NetworkResult
 import com.example.karaokekotlin.util.Utils
 import com.example.karaokekotlin.viewmodel.MainViewModel
 import com.example.karaokekotlin.viewmodel.SongViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
@@ -45,10 +46,11 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("TAGggg", "search oncreate view")
         // Inflate the layout for this fragment
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-
+        setHasOptionsMenu(true)
         setupRecyclerview()
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -70,9 +72,19 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun searchApiData(searchQuery: String) {
         showShimmerEffect()
-        mainViewModel.getSearchSongResponse(songViewModel.applySearchQuery(searchQuery))
+        mainViewModel.getSearchSongResponse(songViewModel.applySearchQuery("$searchQuery karaoke"))
         mainViewModel.searchSongResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -120,5 +132,6 @@ class SearchFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        Log.d("TAGggg", "search on destroy")
     }
 }

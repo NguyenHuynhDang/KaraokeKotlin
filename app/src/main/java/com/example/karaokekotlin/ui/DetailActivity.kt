@@ -289,6 +289,7 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                     ).show()
                 }
                 btSingnRecord.visibility = View.GONE
+                btSing.text = getString(R.string.stop)
                 viewOnStatStreaming()
 
                 isStreaming = true
@@ -297,6 +298,7 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 Log.d(TAG + "sing", "value is ${sbMicVolume.progress.toFloat()}")
             } else {
                 btSingnRecord.visibility = View.VISIBLE
+                btSing.text = getString(R.string.start)
                 viewOnStopStreaming()
 
                 isStreaming = false
@@ -323,6 +325,7 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 } else {
                     btSing.visibility = View.GONE
                     viewOnStatStreaming()
+                    btSingnRecord.text = getString(R.string.stop)
 
                     streamObject.startStreaming()
                     streamObject.setMicVolume(sbMicVolume.progress.toFloat())
@@ -339,7 +342,7 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 //stream and record stop
                 btSing.visibility = View.VISIBLE
                 viewOnStopStreaming()
-
+                btSing.text = getString(R.string.start_and_record)
                 streamObject.stopStreaming()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     Log.d("TAGggg stop sing&capture", "call stop + isStreaming is ${isStreaming}")
@@ -492,7 +495,7 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 isCapturing = true
                 btSing.visibility = View.GONE
                 audioFile = createAudioFile()
-
+                btSingnRecord.text = getString(R.string.stop)
                 viewOnStatStreaming()
 
                 streamObject.startStreaming()
