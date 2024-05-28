@@ -342,7 +342,7 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 //stream and record stop
                 btSing.visibility = View.VISIBLE
                 viewOnStopStreaming()
-                btSing.text = getString(R.string.start_and_record)
+                btSingnRecord.text = getString(R.string.start_and_record)
                 streamObject.stopStreaming()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     Log.d("TAGggg stop sing&capture", "call stop + isStreaming is ${isStreaming}")
