@@ -13,12 +13,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/favoriteSongRowLayout"
         android:layout_width="match_parent"
-        android:layout_height="263dp"
+        android:layout_height="280dp"
         android:layout_marginVertical="0dp">
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/favorite_row_cardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,22 +39,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/view2"
                 app:loadImageFromUrl="@{favoriteSongEntity.item.snippet.thumbnails.medium.url}"
                 />
 
             <TextView
                 android:id="@+id/view2"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                tools:text="Khuc nhac"
+                tools:text="Khuc nhac da kdal adadkwka k ka kdak ak  mdmak damk kggg"
                 android:maxLines="2"
+                android:ellipsize="end"
                 android:layout_marginHorizontal="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Iv_thumbnail"
-                android:text="@{favoriteSongEntity.item.snippet.title}" />
+                android:text="@{favoriteSongEntity.item.snippet.title}"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 

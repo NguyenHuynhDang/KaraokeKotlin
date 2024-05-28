@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/song_layout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="290dp"
         android:layout_marginVertical="0dp">
         <ImageView
             android:id="@+id/Iv_thumbnail"
@@ -29,16 +29,17 @@
 
         <TextView
             android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textStyle="bold"
-            tools:text="Khuc nhac hoa cung anh nhac kara oke"
+            tools:text="Khuc nhac hoa cung anh nhac kara oke ggg ggg ggg ggg gg ggg ggg"
             android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Iv_thumbnail"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="@{item.snippet.title}"
             android:layout_marginHorizontal="12dp"/>
 

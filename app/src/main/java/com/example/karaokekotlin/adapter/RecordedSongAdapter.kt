@@ -249,12 +249,17 @@ class RecordedSongAdapter (
                 setView(view)
                 setNegativeButton(requireActivity.getString(R.string.cancel)) { dialogInterface, _ ->
                     dialogInterface.cancel()
+                    actionMode?.finish()
                 }
                 setPositiveButton(requireActivity.getString(R.string.save)) { _, _ ->
+                    Log.d("xxx", "${selectedItems} before update")
                     mainViewModel.updateRecordedSong(selectedItems.first().copy(name = editText.text.toString()))
+                    actionMode?.finish()
                 }
                 show()
             }
+            Log.d("xxx", "${selectedItems} after diaglog show")
+            Log.d("xxx", "${selectedItems} after action mode finish")
         }
         return true
     }

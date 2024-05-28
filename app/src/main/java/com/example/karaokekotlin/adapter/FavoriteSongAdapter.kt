@@ -191,9 +191,11 @@ class FavoriteSongAdapter(
                 setView(view)
                 setNegativeButton(requireActivity.getString(R.string.cancel)) { dialogInterface, _ ->
                     dialogInterface.cancel()
+                    actionMode?.finish()
                 }
                 setPositiveButton(requireActivity.getString(R.string.save)) { _, _ ->
                     mainViewModel.updateFavoriteSong(newFavoriteSong.apply { item.snippet.title = editText.text.toString() })
+                    actionMode?.finish()
                 }
                 show()
             }
