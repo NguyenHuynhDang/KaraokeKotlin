@@ -228,6 +228,7 @@ class RecordedSongAdapter (
 
     override fun onActionItemClicked(actionMode: ActionMode?, menu: MenuItem?): Boolean {
         if (menu?.itemId == R.id.delete_favorite_song_menu) {
+            mediaPlayerManager.stopPlaying()
             selectedItems.forEach {
                 val file = File(it.path)
                 if (file.exists()) file.delete()

@@ -59,6 +59,7 @@ class RecordedFragment : Fragment() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == R.id.deleteAll_recorded_songs_menu) {
+                    MediaPlayerManager.stopPlaying()
                     val listRecorded = mainViewModel.readRecordedSongs.value
                     for (r in listRecorded!!) {
                         val file = File(r.path)
