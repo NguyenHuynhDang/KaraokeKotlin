@@ -122,17 +122,22 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         // Got all permissions
         if (hasAllPermissions) {
-            actionBar = supportActionBar
-            setUpView()
-            setYoutubePlayer()
-            initStreamObject()
-            setSingButtonClick()
-            setSingnRecordButtonClick()
-            setEffectSwitchClick()
-            setAutotuneSwitchClick()
-            setSeekbarListener()
-            binding.viewStart.visibility = View.VISIBLE
+          firstInit()
         }
+    }
+
+    private fun firstInit()
+    {
+        actionBar = supportActionBar
+        setUpView()
+        setYoutubePlayer()
+        initStreamObject()
+        setSingButtonClick()
+        setSingnRecordButtonClick()
+        setEffectSwitchClick()
+        setAutotuneSwitchClick()
+        setSeekbarListener()
+        binding.viewStart.visibility = View.VISIBLE
     }
 
     override fun onBackPressed() {
@@ -199,6 +204,9 @@ class DetailActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                     Toast.LENGTH_SHORT
                 ).show()
         }
+
+        if (hasAllPermissions)
+            firstInit()
     }
 
     private fun setUpView() {

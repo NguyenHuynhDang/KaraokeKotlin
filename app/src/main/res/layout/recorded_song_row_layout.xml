@@ -51,19 +51,20 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <TextView
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/tv_recorded_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="4dp"
-                        android:maxLines="2"
                         android:ellipsize="end"
+                        android:maxLines="2"
                         android:text="@{recordedSongEntity.name}"
-                        android:textSize="25sp"
+                        android:textSize="24sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="Khuc nhac 25-04-2003 nhac nay luc le n hinh khong dung mo ta" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
